@@ -1,0 +1,9 @@
+export const GET_LIST_COURSE = `GET_LIST_COURSE`;
+export const DETAIL_COURSE = `DETAIL_COURSE`;
+export const LAY_DANH_MUC_KHOA_HOC = `LAY_DANH_MUC_KHOA_HOC`;
+export const LAY_DANH_SACH_GV = `LAY_DANH_SACH_GV`;
+export const LAY_DANH_SACH_HV = `LAY_DANH_SACH_HV`;
+export const SAVE_USER = `SAVE_USER`;
+export const DELETE_USER = `DELETE_USER`;
+export const EDIT_USER = `EDIT_USER`;
+export const FILTER_USER = `FILTER_USER`;
