@@ -36,11 +36,14 @@ const styles = {
       lineHeight: `1`,
     },
   },
+  root: {
+    color: `#ef4056`,
+  },
 };
 
 const useStyles = makeStyles(styles);
 
-export default function List() {
+export default function Branch() {
   const [state, setState] = useState({
     columns: [
       { title: `Tài khoản`, field: `taiKhoan` },
@@ -64,7 +67,7 @@ export default function List() {
           console.log(result);
           result.data.map(r => {
             console.log(r);
-            if (r.maLoaiNguoiDung === `GV`) {
+            if (r.maLoaiNguoiDung === `HV`) {
               setState(prevState => {
                 const data = [...prevState.data];
                 data.push({
@@ -87,14 +90,25 @@ export default function List() {
       });
   };
 
-  React.useEffect(getGV, []);
-  const classes = useStyles();
+  const delteGV = data => {
+    console.log(data.name);
+    callAPI(`QuanLyNguoiDung/XoaNguoiDung`, `POST`, null, null)
+      .then(result => {
+        console.log(result);
+      })
+      .catch(err => {
+        console.log(err.response.data);
+      });
+  };
 
+  React.useEffect(getGV, []);
+
+  const classes = useStyles();
   return (
     <GridItem md={12} sm={12} xs={12}>
       <Card>
         <CardHeader color="info">
-          <h4 className={classes.cardTitleWhite}>Danh sách giảng viên</h4>
+          <h4 className={classes.cardTitleWhite}>Danh sách học viên</h4>
         </CardHeader>
         <CardBody>
           <MaterialTable
@@ -105,28 +119,26 @@ export default function List() {
               onRowAdd: newData =>
                 new Promise(resolve => {
                   setTimeout(() => {
+                    resolve();
                     setState(prevState => {
                       const data = [...prevState.data];
                       data.push({
                         email: newData?.email,
                         emailVerified: Boolean(newData?.emailVerified),
+                        status: newData?.status,
                         phoneNumber: newData?.phoneNumber,
-                        identityCard: newData?.identityCard,
-                        firstName: newData?.firstName,
-                        lastName: newData?.lastName,
-                        office: newData?.office,
-                        branch: newData?.branch,
+                        address: newData?.address,
+                        restaurantName: newData?.restaurantName,
                       });
                       return { ...prevState, data };
                     });
-                    resolve();
                   }, 600);
                 }),
               onRowUpdate: (newData, oldData) =>
                 new Promise(resolve => {
                   setTimeout(() => {
                     resolve();
-                    if (oldData?.branch === `6` && newData === `6`) {
+                    if (oldData) {
                       setState(prevState => {
                         const data = [...prevState.data];
                         data[data.indexOf(oldData)] = newData;
@@ -137,6 +149,7 @@ export default function List() {
                 }),
               onRowDelete: oldData =>
                 new Promise(resolve => {
+                  delteGV(oldData);
                   setTimeout(() => {
                     resolve();
                     setState(prevState => {

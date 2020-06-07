@@ -43,40 +43,39 @@ const useStyles = makeStyles(styles);
 export default function List() {
   const [state, setState] = useState({
     columns: [
-      { title: `Tài khoản`, field: `taiKhoan` },
-      { title: `Họ tên`, field: `name` },
-      { title: `Email`, field: `address` },
-      // { title: `Age`, field: `age`, type: `numeric` },
-      { title: `SĐT`, field: `gender` },
+      { title: `Mã khóa học`, field: `maKhoaHoc` },
+      { title: `Tên khóa học`, field: `tenKhoaHoc` },
+      { title: `Mô tả`, field: `moTa` },
+      { title: `Ngày tạo`, field: `ngayTao` },
+      { title: `Số lượng học viên`, field: `soLuongHocVien` },
+      // { title: `Người tạo`, field: `nguoiTao` },
+      // { title: `Danh mục khóa học`, field: `danhMucKhoaHoc` },
+      { title: `Hình ảnh`, field: `hinhAnh` },
     ],
     data: [],
   });
 
   const getGV = () => {
-    callAPI(
-      `QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP08`,
-      `GET`,
-      null,
-      null,
-    )
+    callAPI(`QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP08`, `GET`, null, null)
       .then(result => {
         if (result?.data) {
           console.log(result);
           result.data.map(r => {
-            console.log(r);
-            if (r.maLoaiNguoiDung === `GV`) {
-              setState(prevState => {
-                const data = [...prevState.data];
-                data.push({
-                  taiKhoan: r.taiKhoan,
-                  name: r.hoTen,
-                  address: r.email,
-                  age: r.sdt,
-                  gender: r.soDt,
-                });
-                return { ...prevState, data };
+            // console.log(r);
+            setState(prevState => {
+              const data = [...prevState.data];
+              data.push({
+                maKhoaHoc: r.maKhoaHoc,
+                tenKhoaHoc: r.tenKhoaHoc,
+                moTa: r.moTa,
+                soLuongHocVien: r.soLuongHocVien,
+                // nguoiTao: r.nguoiTao,
+                // danhMucKhoaHoc: r.danhMucKhoaHoc,
+                hinhAnh: r.hinhAnh,
               });
-            }
+              return { ...prevState, data };
+            });
+
             return null;
           });
         }
@@ -94,7 +93,7 @@ export default function List() {
     <GridItem md={12} sm={12} xs={12}>
       <Card>
         <CardHeader color="info">
-          <h4 className={classes.cardTitleWhite}>Danh sách giảng viên</h4>
+          <h4 className={classes.cardTitleWhite}>Danh sách khóa học</h4>
         </CardHeader>
         <CardBody>
           <MaterialTable

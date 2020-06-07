@@ -83,7 +83,7 @@ export default function Admin({ ...rest }) {
         handleDrawerToggle={handleDrawerToggle}
         image={image}
         logo={logo}
-        logoText={`OLD MAN 24h`}
+        logoText={`EDULINE ADMIN`}
         open={mobileOpen}
         routes={routes}
         {...rest}
