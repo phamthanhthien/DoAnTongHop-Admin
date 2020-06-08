@@ -59,7 +59,7 @@ export default function List() {
     callAPI(`QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP08`, `GET`, null, null)
       .then(result => {
         if (result?.data) {
-          console.log(result);
+          console.log(result.data);
           result.data.map(r => {
             // console.log(r);
             setState(prevState => {

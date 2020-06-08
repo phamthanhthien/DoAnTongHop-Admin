@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "craco start",
+    "start": "set PORT=4000 && craco start",
     "backend": "nodemon -q -w src-backend --signal SIGTERM src-backend",
     "pret": "eslint --ignore-path=.gitignore --fix . && prettier --ignore-path=.gitignore --loglevel=silent --write \"**/*.{html,scss,json,md}\"",
     "pret-": "yarn pret && yarn pret-objc && yarn pret-java && yarn pret-xml && yarn pret-img",
@@ -66,6 +66,8 @@
     "socket.io": "2.3.0",
     "sql-formatter": "2.3.3",
     "stack-trace": "0.0.10",
+    "sweetalert2": "^9.14.2",
+    "sweetalert2-react-content": "^3.0.1",
     "validatorjs": "3.17.1"
   },
   "devDependencies": {

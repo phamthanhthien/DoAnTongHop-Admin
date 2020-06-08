@@ -14,6 +14,8 @@ import {
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 import { callAPI } from './utils/CallAPI';
 
@@ -37,6 +39,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const MySwal = withReactContent(Swal);
+
 export default function Login() {
   const classes = useStyles();
   let history = useHistory();
@@ -57,7 +61,19 @@ export default function Login() {
         }
       })
       .catch(err => {
-        console.log(err.response.data);
+        MySwal.fire({
+          title: <p></p>,
+          footer: `EduLine Admin`,
+          onOpen: () => {
+            // `MySwal` is a subclass of `Swal`
+            //   with all the same instance & static methods
+            MySwal.clickConfirm();
+          },
+        }).then(() => {
+          return MySwal.fire(<p>{err.response.data}</p>);
+        });
+        // alert(err.response.data);
+        // console.log(err.response.data);
       });
   };
 
