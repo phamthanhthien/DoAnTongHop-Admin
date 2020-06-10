@@ -41,7 +41,7 @@ export default function UserDataProfile() {
       <GridContainer>
         <GridItem md={8} sm={12} xs={12}>
           <Card>
-            <CardHeader color="info">
+            <CardHeader color="primary">
               <h4 className={classes.cardTitleWhite}>Thông tin</h4>
               <p className={classes.cardCategoryWhite}>
                 Cập nhật thông tin tài khoản
@@ -172,7 +172,7 @@ export default function UserDataProfile() {
               </GridContainer>
             </CardBody>
             <CardFooter>
-              <Button color="info">Cập nhật thông tin</Button>
+              <Button color="primary">Cập nhật thông tin</Button>
             </CardFooter>
           </Card>
         </GridItem>
@@ -190,7 +190,7 @@ export default function UserDataProfile() {
               <h6 className={classes.cardCategory}>{`hello`}</h6>
               <h4 className={classes.cardTitle}>{`hello` || avatar}</h4>
               <p className={classes.description}></p>
-              <Button color="info" round>
+              <Button color="primary" round>
                 Theo dõi
               </Button>
             </CardBody>

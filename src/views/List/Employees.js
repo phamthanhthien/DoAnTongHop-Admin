@@ -93,7 +93,7 @@ export default function List() {
   return (
     <GridItem md={12} sm={12} xs={12}>
       <Card>
-        <CardHeader color="info">
+        <CardHeader color="success">
           <h4 className={classes.cardTitleWhite}>Danh sách giảng viên</h4>
         </CardHeader>
         <CardBody>
@@ -149,7 +149,7 @@ export default function List() {
             }}
             options={{
               rowStyle: {
-                color: `#26c6da`,
+                color: `#000`,
               },
               actionsCellStyle: {
                 color: `#26c6da`,
@@ -160,7 +160,7 @@ export default function List() {
                 fontSize: `16px`,
               },
               searchFieldStyle: {
-                color: `#26c6da`,
+                color: `#000`,
               },
             }}
             title={null}

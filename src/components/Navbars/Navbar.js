@@ -46,7 +46,7 @@ export default function Header(props) {
         <Hidden implementation="css" mdUp>
           <IconButton
             aria-label="open drawer"
-            color="inherit"
+            color="success"
             onClick={props.handleDrawerToggle}
           >
             <Menu />

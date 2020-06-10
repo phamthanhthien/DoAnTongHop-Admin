@@ -40,6 +40,12 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
+const ImageComponent = ({ imagrUrl }) => {
+  return (
+    <img alt="..." src={imagrUrl} style={{ width: `100px`, height: `100ox` }} />
+  );
+};
+
 export default function List() {
   const [state, setState] = useState({
     columns: [
@@ -48,8 +54,8 @@ export default function List() {
       { title: `Mô tả`, field: `moTa` },
       { title: `Ngày tạo`, field: `ngayTao` },
       { title: `Số lượng học viên`, field: `soLuongHocVien` },
-      // { title: `Người tạo`, field: `nguoiTao` },
-      // { title: `Danh mục khóa học`, field: `danhMucKhoaHoc` },
+      { title: `Người tạo`, field: `nguoiTao` },
+      { title: `Danh mục khóa học`, field: `danhMucKhoaHoc` },
       { title: `Hình ảnh`, field: `hinhAnh` },
     ],
     data: [],
@@ -65,13 +71,18 @@ export default function List() {
             setState(prevState => {
               const data = [...prevState.data];
               data.push({
-                maKhoaHoc: r.maKhoaHoc,
+                maKhoaHoc: (
+                  <a href="https://www.youtube.com/watch?v=Lm3UG2GXLHk">
+                    {r.maKhoaHoc}
+                  </a>
+                ),
                 tenKhoaHoc: r.tenKhoaHoc,
                 moTa: r.moTa,
                 soLuongHocVien: r.soLuongHocVien,
-                // nguoiTao: r.nguoiTao,
-                // danhMucKhoaHoc: r.danhMucKhoaHoc,
-                hinhAnh: r.hinhAnh,
+                ngayTao: r.ngayTao,
+                nguoiTao: r.nguoiTao.taiKhoan,
+                danhMucKhoaHoc: r.danhMucKhoaHoc.maDanhMucKhoahoc,
+                hinhAnh: <ImageComponent imagrUrl={r.hinhAnh} />,
               });
               return { ...prevState, data };
             });
@@ -92,7 +103,7 @@ export default function List() {
   return (
     <GridItem md={12} sm={12} xs={12}>
       <Card>
-        <CardHeader color="info">
+        <CardHeader color="success">
           <h4 className={classes.cardTitleWhite}>Danh sách khóa học</h4>
         </CardHeader>
         <CardBody>
@@ -148,7 +159,7 @@ export default function List() {
             }}
             options={{
               rowStyle: {
-                color: `#26c6da`,
+                color: `#000`,
               },
               actionsCellStyle: {
                 color: `#26c6da`,
@@ -159,7 +170,7 @@ export default function List() {
                 fontSize: `16px`,
               },
               searchFieldStyle: {
-                color: `#26c6da`,
+                color: `#000`,
               },
             }}
             title={null}
