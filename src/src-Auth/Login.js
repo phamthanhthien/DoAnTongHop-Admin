@@ -127,7 +127,7 @@ export default function Login() {
             onClick={actLoginAdmin}
             variant="contained"
           >
-            Đặng nhập
+            Đăng nhập
           </Button>
           <Grid container>
             <Grid item xs></Grid>
