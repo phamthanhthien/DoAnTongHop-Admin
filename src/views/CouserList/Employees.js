@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import MaterialTable from 'material-table';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import Card from '../../components/Card/Card';
 import CardBody from '../../components/Card/CardBody';
@@ -72,9 +73,9 @@ export default function List() {
               const data = [...prevState.data];
               data.push({
                 maKhoaHoc: (
-                  <a href="https://www.youtube.com/watch?v=Lm3UG2GXLHk">
+                  <Link to="https://www.youtube.com/watch?v=Lm3UG2GXLHk">
                     {r.maKhoaHoc}
-                  </a>
+                  </Link>
                 ),
                 tenKhoaHoc: r.tenKhoaHoc,
                 moTa: r.moTa,

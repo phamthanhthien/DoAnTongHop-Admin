@@ -6,6 +6,7 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 import CouserList from './views/CouserList/CouserList';
 import DashboardPage from './views/Dashboard/Dashboard';
 import List from './views/List/List';
+import RegisterCourse from './views/RegisterCourse/RegisterCourse';
 import Scheduler from './views/Scheduler/Scheduler';
 import UserProfile from './views/UserProfile/UserProfile';
 
@@ -36,6 +37,13 @@ const dashboardRoutes = [
     name: `Khóa học`,
     icon: MenuBookIcon,
     component: CouserList,
+    layout: `/admin`,
+  },
+  {
+    path: `/register-course`,
+    name: `Ghi danh khóa học`,
+    icon: MenuBookIcon,
+    component: RegisterCourse,
     layout: `/admin`,
   },
   {

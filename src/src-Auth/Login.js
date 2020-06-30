@@ -57,7 +57,17 @@ export default function Login() {
           //Chuyển sang trang Dashboard Admin
           history.push(`/admin/dashboard`);
         } else {
-          alert(`Bạn không có quyền truy cập`);
+          MySwal.fire({
+            title: <p></p>,
+            footer: `EduLine Admin`,
+            onOpen: () => {
+              // `MySwal` is a subclass of `Swal`
+              //   with all the same instance & static methods
+              MySwal.clickConfirm();
+            },
+          }).then(() => {
+            return MySwal.fire(<p>{`Bạn không có quyền truy cập`}</p>);
+          });
         }
       })
       .catch(err => {
