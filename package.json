@@ -54,7 +54,7 @@
     "merge-graphql-schemas": "1.7.3",
     "moment": "^2.26.0",
     "mysql2": "2.0.1",
-    "nodemailer": "6.3.1",
+    "nodemailer": "6.4.16",
     "perfect-scrollbar": "^1.5.0",
     "pluralize": "8.0.0",
     "prop-types": "^15.7.2",
